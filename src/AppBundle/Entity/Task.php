@@ -36,11 +36,6 @@ class Task
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(s="Issue")
-     */
-    protected $issue;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="media", type="string", length=255)
