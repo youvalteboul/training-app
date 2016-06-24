@@ -1,0 +1,30 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    my_app.discount_manager:
+        class: AppBundle\Manager\DiscountManager
+
+    my_app.discount.validity_checker:
+        class: AppBundle\Checker\ValidityChecker
+        deprecated: The "%service_id%" service is deprecated.
+        tags:
+            - {name: discount_checker}
+
+    my_app.discount.currency_checker:
+        class: AppBundle\Checker\CurrencyChecker
+        tags:
+            - {name: discount_checker}
+
+    my_app.form.type.task:
+        class: AppBundle\Form\Type\TaskType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+    my_app.image_type_extension:
+        class: AppBundle\Form\Extension\FileTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FileType }

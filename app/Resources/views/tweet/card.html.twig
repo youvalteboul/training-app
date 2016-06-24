@@ -1,0 +1,11 @@
+<div class="tweet-card">
+    {% block tweet_content %}
+        <p>{{ tweet.content }}</p>
+    {% endblock %}
+
+    {% block tweet_user%}
+        <small>{{ tweet.user.username }} ({{ tweet.user.email }})</small> {# Trigger une requête SQL #}
+
+    {% endblock %}
+</div>
+{{ constant('MAX_ITEMS', post) }}
